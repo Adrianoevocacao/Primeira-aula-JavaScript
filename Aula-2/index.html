@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR"> <!-- corrigido idioma -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema Escolar Básico</title> <!-- corrigido acento -->
+</head>
+<body>
+    <h1>Situação do Aluno</h1>
+
+    <p>
+        Nome do Aluno:
+        <input type="text" id="inNome">
+    </p>
+
+    <p>
+        Nota do Aluno 1º Semestre:
+        <input type="text" id="inNota1">
+    </p>
+
+    <p>
+        Nota do Aluno 2º Semestre:
+        <input type="text" id="inNota2">
+    </p>
+
+    <p>
+        <input type="button" value="Exibir Média e Situação do Aluno(a)" id="btResultado">
+    </p>
+
+    <h3 id="outMedia"></h3>
+    <h3 id="outSituacao"></h3>
+
+    <!-- script no final (boa prática) -->
+    <script src="escola.js"></script>
+</body>
+</html>
