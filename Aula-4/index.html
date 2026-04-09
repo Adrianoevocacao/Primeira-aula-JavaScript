@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Hamburgueria carrinho de compra</title>
+</head>
+<body>
+
+<h2>Hamburgueria: Carrinho de Compra</h2>
+
+<button onclick="adicionarItem('X-Burguer', 29)">X-Burguer R$ 29</button>
+<button onclick="adicionarItem('X-Ratão', 34)">X-Ratão R$ 34</button>
+<button onclick="adicionarItem('X-Feijão', 67)">X-Feijão R$ 67</button>
+
+<pre id="lista-carrinho"></pre>
+<b id="total">Total: R$ 0,00</b>
+
+<script>
+    var carrinho = [];
+
+    function adicionarItem(nome, preco) {
+        carrinho.push({ nome: nome, preco: preco });
+        atualizarCarrinho(); // atualiza sempre que adicionar
+    }
+
+    function atualizarCarrinho() {
+        var total = 0;
+        var lista = "";
+
+        for (var i = 0; i < carrinho.length; i++) {
+            total += carrinho[i].preco;
+            lista += carrinho[i].nome + " - R$ " + carrinho[i].preco.toFixed(2) + "\n";
+        }
+
+        document.getElementById("lista-carrinho").innerText = lista;
+        document.getElementById("total").innerText = "Total: R$ " + total.toFixed(2);
+    }
+</script>
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Hamburgueria carrinho de compra</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #ff914d, #ff3131);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .container {
+        background: white;
+        padding: 25px;
+        border-radius: 15px;
+        width: 350px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+        text-align: center;
+    }
+
+    h2 {
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .menu button {
+        width: 100%;
+        margin: 5px 0;
+        padding: 12px;
+        border: none;
+        border-radius: 10px;
+        background: #ff914d;
+        color: white;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .menu button:hover {
+        background: #ff6a00;
+        transform: scale(1.03);
+    }
+
+    .carrinho {
+        margin-top: 20px;
+        text-align: left;
+        background: #f7f7f7;
+        padding: 10px;
+        border-radius: 10px;
+        height: 120px;
+        overflow-y: auto;
+        font-size: 14px;
+    }
+
+    .total {
+        margin-top: 15px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h2>🍔 Hamburgueria</h2>
+
+    <div class="menu">
+        <button onclick="adicionarItem('X-Burguer', 29)">X-Burguer - R$ 29</button>
+        <button onclick="adicionarItem('X-Ratão', 34)">X-Ratão - R$ 34</button>
+        <button onclick="adicionarItem('X-Feijão', 67)">X-Feijão - R$ 67</button>
+    </div>
+
+    <div class="carrinho" id="lista-carrinho"></div>
+
+    <div class="total" id="total">Total: R$ 0,00</div>
+</div>
+
+<script>
+    var carrinho = [];
+
+    function adicionarItem(nome, preco) {
+        carrinho.push({ nome: nome, preco: preco });
+        atualizarCarrinho();
+    }
+
+    function atualizarCarrinho() {
+        var total = 0;
+        var lista = "";
+
+        for (var i = 0; i < carrinho.length; i++) {
+            total += carrinho[i].preco;
+            lista += carrinho[i].nome + " - R$ " + carrinho[i].preco.toFixed(2) + "<br>";
+        }
+
+        document.getElementById("lista-carrinho").innerHTML = lista;
+        document.getElementById("total").innerText = "Total: R$ " + total.toFixed(2);
+    }
+</script>
+
+
+</body>
+</html>
