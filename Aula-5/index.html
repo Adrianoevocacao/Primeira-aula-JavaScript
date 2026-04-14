@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Consulta de CEP</h1>
+    <input type="text" id="cep" placeholder="Digite o CEP">
+    <button onclick="buscarCEP()">Consultar CEP</button>
+    <input type="text" id="logradouro" placeholder="">
+    <input type="text" id="numero" placeholder="">
+    <input type="text" id="complemento" placeholder="Complemento(Casa, Apto, Bloco, Condominio)">
+    <input type="text" id="bairro" placeholder="bairro">
+    <input type="text" id="cidade" placeholder="cidade">
+    <input type="text" id="uf" placeholder="uf">
+
+    <script>
+        const cepInput = document.querySelector("#cep");
+        const logradouroInput = document.querySelector("#logradouro");
+        const bairroInput = document.querySelector("#bairro");
+        const cidadeInput = document.querySelector("#cidade");
+        const ufInput = document.querySelector("#uf");
+
+        async function buscarCEP(){
+            let cep = cepInput.value.replace(/\D/g,"")
+            if(cep.length !==8){
+                alert("CEP inválido!");
+                return;
+            }
+            const url = `https://viacep.com.br/ws/${cep}/json/`;
+
+            try{
+                const response = await fetch(url)
+                const data = await response.json()
+
+                if(data.erro){
+                    alert("CEP não encontrado")
+                    return;
+                }
+                logradouroInput.value = data.logradouro;
+                bairroInput.value=data.bairro;
+                cidadeInput.value=data.localidade;
+                ufInput.value=data.uf;
+            }catch (error){
+                console.error("Erro:",error);
+                alert("Erro ao buscar CEP");
+            }
+        }
+    </script>
+</body>
+</html>

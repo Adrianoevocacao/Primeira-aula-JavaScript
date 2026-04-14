@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Tabuada (Forma Mais Simples)</h2>
+    
+    <input type="number" id="num">
+    <button onclick="gerar()">Gerar</button>
+
+    <div id="resultado"></div>
+
+    <script>
+        function gerar() {
+            let n = document.getElementById("num").value;
+            let res = document.getElementById("resultado");
+            
+            // Limpa o resultado anterior
+            res.innerHTML = ""; 
+
+            for (let i = 1; i <= 10; i++) {
+                // Aqui usamos o "+" para "colar" os pedaços
+                res.innerHTML += n + " x " + i + " = " + (n * i) + "<br>";
+            }
+        }
+    </script>
+</body>
+</html>
